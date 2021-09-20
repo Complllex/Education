@@ -1,0 +1,1 @@
+char as_strcmp(char const *s, char const *m);
