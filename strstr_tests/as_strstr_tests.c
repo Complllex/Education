@@ -38,16 +38,16 @@ void test_strstr_with_different_letters()
   g_assert_cmpfloat(f, ==, 1);
 }
 
-void test_strstr_with_negative_float()
+void test_strstr_with_special_letters()
 {
-  int f = invoke_strstr("T56jasdMznx5qwqe", "T56jasdMznx5qwqe");
-  g_assert_cmpfloat(f, ==, 0);
+  int f = invoke_strstr("wwwwaf!@#$af asdds ds avdsve", "ds");
+  g_assert_cmpfloat(f, ==, 1);
 }
 
-void test_strstr_with_large_float()
+void test_strstr_with_letter()
 {
-  int f = invoke_strstr("340282346638528859811704183484516925440", "340282346638528859811704183484516925440123123");
-  g_assert_cmpfloat(f, ==, -49);
+  int f = invoke_strstr("aff gdf wth", "wth");
+  g_assert_cmpfloat(f, ==, 1);
 }
 
 void test_strstr_with_float_followed_by_characters()
@@ -70,8 +70,8 @@ int main(int argc, char* argv[])
   g_test_add_func("/strstr/singlenumber", test_strstr_with_singlenumber);
   g_test_add_func("/strstr/longstring", test_strstr_with_longstring);
   g_test_add_func("/strstr/different_letters", test_strstr_with_different_letters);
-  g_test_add_func("/strstr/negative_float", test_strstr_with_negative_float);
-  g_test_add_func("/strstr/large_float", test_strstr_with_large_float);
+  g_test_add_func("/strstr/special_letters", test_strstr_with_special_letters);
+  g_test_add_func("/strstr/letter", test_strstr_with_letter);
   g_test_add_func("/strstr/float_followed_by_characters", test_strstr_with_float_followed_by_characters);
   g_test_add_func("/strstr/characters_followed_by_float", test_strstr_with_characters_followed_by_float);
   return g_test_run();
