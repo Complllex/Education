@@ -1,0 +1,62 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "(make) build",
+        "type": "shell",
+        "command": "make",
+        "options": {
+          "cwd": "${workspaceRoot}/strcmp_tests"
+        },
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "(make) clean",
+        "type": "shell",
+        "command": "make",
+        "args": [
+          "clean"
+        ],
+        "options": {
+          "cwd": "${workspaceRoot}/strcmp_tests"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "(make) build strstr",
+        "type": "shell",
+        "command": "make",
+        "options": {
+          "cwd": "${workspaceRoot}/strstr_tests"
+        },
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
+      },
+      {
+        "label": "(make) clean strstr",
+        "type": "shell",
+        "command": "make",
+        "args": [
+          "clean"
+        ],
+        "options": {
+          "cwd": "${workspaceRoot}/strstr_tests"
+        },
+        "problemMatcher": []
+      },
+    ]
+  }
+  
