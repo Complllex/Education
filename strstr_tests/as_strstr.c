@@ -6,7 +6,6 @@ char as_strstr(char const* text, char const* find)
 {
   int result = 0;
   int result2 = 0;
-  int count = 0;
   g_assert(text != NULL);
   g_assert(find != NULL);
   while (*find != '\0') {
