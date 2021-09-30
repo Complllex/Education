@@ -28,6 +28,9 @@
         "options": {
           "cwd": "${workspaceRoot}/strcmp_tests"
         },
+        "args": [
+          "GLIB_HOME=/usr"
+        ],
         "problemMatcher": []
       },
       {
@@ -56,6 +59,24 @@
           "cwd": "${workspaceRoot}/strstr_tests"
         },
         "problemMatcher": []
+      },
+      {
+        "label": "(make) build strstr - macOS",
+        "type": "shell",
+        "command": "make",
+        "options": {
+          "cwd": "${workspaceRoot}/strstr_tests"
+        },
+        "args": [
+          "GLIB_HOME=/usr/local/Cellar/glib/2.68.3"
+        ],
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": false
+        }
       },
     ]
   }

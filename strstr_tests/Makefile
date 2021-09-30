@@ -1,5 +1,4 @@
 CC = gcc
-GLIB_HOME = /usr
 
 SOURCES = as_strstr.c as_strstr_tests.c
 OBJECTS = $(SOURCES:%.c=%.o)
