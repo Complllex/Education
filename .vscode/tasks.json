@@ -13,6 +13,9 @@
         "problemMatcher": [
           "$gcc"
         ],
+        "args": [
+          "GLIB_HOME=/usr"
+        ],
         "group": {
           "kind": "build",
           "isDefault": true
@@ -28,9 +31,6 @@
         "options": {
           "cwd": "${workspaceRoot}/strcmp_tests"
         },
-        "args": [
-          "GLIB_HOME=/usr"
-        ],
         "problemMatcher": []
       },
       {
@@ -40,6 +40,9 @@
         "options": {
           "cwd": "${workspaceRoot}/strstr_tests"
         },
+        "args": [
+          "GLIB_HOME=/usr"
+        ],
         "problemMatcher": [
           "$gcc"
         ],
