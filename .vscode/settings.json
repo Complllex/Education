@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "functional": "c"
+        "functional": "c",
+        "glib.h": "c",
+        "chrono": "cpp"
     }
 }

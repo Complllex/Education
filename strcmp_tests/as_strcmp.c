@@ -1,11 +1,11 @@
 #include <glib.h>
 
-#include "as_strcmp_source.h"
+#include "as_strcmp.h"
 
 int result;
 
-char as_strcmp(char const *s, char const *m) {
-
+char as_strcmp(char const* s, char const* m)
+{
   g_assert(s != NULL);
   g_assert(m != NULL);
   g_assert(*s != '\0');
@@ -17,13 +17,12 @@ char as_strcmp(char const *s, char const *m) {
     return 0;
   }
   result = 0;
-  double order = 1;
   while (*s != '\0' || *m != '\0') {
     int number = *s - 96;
     int numbersecond = *m - 96;
     if (number == numbersecond) {
-      *++s;
-      *++m;
+      ++s;
+      ++m;
     } else {
       result = number - numbersecond;
       return result;

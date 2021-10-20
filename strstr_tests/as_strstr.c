@@ -1,5 +1,5 @@
 #include <glib.h>
-
+#include <stdio.h>
 #include "as_strstr.h"
 
 char as_strstr(char const* text, char const* find)
