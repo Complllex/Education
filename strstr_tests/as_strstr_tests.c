@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "as_strstr.h"
 // Finds the first occurrence of the null-terminated byte string pointed to by substr
 // in the null-terminated byte string pointed to by str. The terminating null characters
 // are not compared.
@@ -35,7 +36,7 @@
 // +------------------------+
 //
 
-char* invoke_strstr(char const* str, char const* substr) { return strstr(str, substr); }
+char* invoke_strstr(char const* str, char const* substr) { return as_strstr(str, substr); }
 
 void test_strstr_with_null()
 {
@@ -51,7 +52,7 @@ void test_strstr_finds_first_occurrence()
 {
   char const* const str = "asfasnadsasn";
   char const* const substr = invoke_strstr(str, "asn");
-  g_assert_cmpint(substr - str, ==, 3);
+  g_assert_cmpint(substr - str, ==, 3); // substr - str
 }
 
 void test_strstr_can_not_find_substr()
