@@ -63,6 +63,46 @@
                 }
             ],
             "preLaunchTask": "(make) build strstr - macOS"     
-        }
+        },
+        {
+            "name": "(gdb) Запустить",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/home/complex/Документы/Codes/Education/Laba4",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "Включить автоматическое форматирование для gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "(make) build strstr - macOS"     
+        },
+            {
+                "name": "(gdb) Запустить LABA15",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "${workspaceFolder}/LABS/a.out",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${fileDirname}",
+                "environment": [],
+                "externalConsole": false,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Включить автоматическое форматирование для gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ],
+                "preLaunchTask": "(make) build"     
+            },
     ]
 }

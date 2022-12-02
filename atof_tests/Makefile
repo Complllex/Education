@@ -1,5 +1,5 @@
 CC = gcc
-GLIB_HOME = /usr/local/Cellar/glib/2.68.3
+GLIB_HOME = /usr
 
 SOURCES = as_atof.c s_atof_test.c
 OBJECTS = $(SOURCES:%.c=%.o)
