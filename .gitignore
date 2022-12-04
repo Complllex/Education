@@ -2,4 +2,5 @@
 .DS_Store
 
 # build artifacts
-.o
+*.o
+tests
