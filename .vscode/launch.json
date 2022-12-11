@@ -22,7 +22,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "(make) build"     
+            "preLaunchTask": "(make) build"
         },
         {
             "name": "(gdb) Запустить STRSTR",
@@ -42,7 +42,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "(make) build strstr"     
+            "preLaunchTask": "(make) build strstr"
         },
         {
             "name": "(lldb) strstr",
@@ -62,7 +62,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "(make) build strstr - macOS"     
+            "preLaunchTask": "(make) build strstr - macOS"
         },
         {
             "name": "(gdb) Запустить",
@@ -82,27 +82,47 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "(make) build strstr - macOS"     
+            "preLaunchTask": "(make) build strstr - macOS"
         },
-            {
-                "name": "(gdb) Запустить LABA15",
-                "type": "cppdbg",
-                "request": "launch",
-                "program": "${workspaceFolder}/LABS/a.out",
-                "args": [],
-                "stopAtEntry": false,
-                "cwd": "${fileDirname}",
-                "environment": [],
-                "externalConsole": false,
-                "MIMode": "gdb",
-                "setupCommands": [
-                    {
-                        "description": "Включить автоматическое форматирование для gdb",
-                        "text": "-enable-pretty-printing",
-                        "ignoreFailures": true
-                    }
-                ],
-                "preLaunchTask": "(make) build"     
-            },
+        {
+            "name": "(gdb) Запустить LABA15",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/LABS/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "Включить автоматическое форматирование для gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "(make) build""preLaunchTask": "(make) build""preLaunchTask": "(make) build"
+        },
+        {
+            "name": "(lldb) main.c",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/a.out",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "Включить автоматическое форматирование для gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "(clang) main - macOS"
+        },
     ]
 }

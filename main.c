@@ -36,7 +36,7 @@ void range_print(struct range const* r) {
 const char* extract_range(const char* input, const char* delimeters, struct range* range) {
   if (*input == '\0') {
     range_init(range);
-    return NULL;
+    return input;
   }
   range->begin = input;
   while (!is_delimeter(*input, delimeters)) {
@@ -47,19 +47,26 @@ const char* extract_range(const char* input, const char* delimeters, struct rang
 
 void split(const char* input, struct range* integral, struct range* fractional) {
   input = extract_range(input, ".", integral);
-  if (!range_is_empty(integral) && *input != '\0') {
+  if (*input != '\0') {
     extract_range(++input, "", fractional);
   }
 }
 
-int main() {
+void parse(const char* input) {
   struct range integral, fractional;
   range_init(&integral);
   range_init(&fractional);
-  split("", &integral, &fractional);
-  printf("integral: ");
+  printf("input: %s\n", input);
+  split(input, &integral, &fractional);
+  printf("  integral: ");
   range_print(&integral);
-  printf("fractional: ");
+  printf("  fractional: ");
   range_print(&fractional);
+}
+
+int main() {
+  parse("");
+  parse("123");
+  parse("123.456");
   return 0;
 }
