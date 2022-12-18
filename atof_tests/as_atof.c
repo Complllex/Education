@@ -1,69 +1,88 @@
-#include <glib.h>
-
 #include "as_atof.h"
+#include <glib.h>
+#include <math.h>
+#include "range.h"
 
-char const* as_end(char const* begin)
-{
-  if (begin == NULL || *begin == '\0') {
-    return begin;
+// Character helpers
+
+bool is_number(char c) { return c >= '0' && c <= '9'; }
+
+bool is_delimeter(char c, char const* extras) {
+  if (c == '\0') {
+    return true;
   }
-  char const* result = begin;
-  while (*++begin != '\0') {
-    result = begin;
+  while (*extras != '\0') {
+    if (*extras++ == c) {
+      return true;
+    }
+  }
+  return false;
+}
+
+int ctoi(char c) { return c - '0'; }
+
+// String helpers
+
+const char* extract_range(const char* input, const char* delimeters, struct range* range) {
+  if (*input == '\0') {
+    range_init(range);
+    return input;
+  }
+  range->begin = input;
+  while (!is_delimeter(*input, delimeters)) {
+    range->end = ++input;
+  }
+  return input;
+}
+
+struct parse_result {
+  char sign;
+  struct range integral;
+  struct range fractional;
+};
+
+void parse_result_init(struct parse_result* result) {
+  result->sign = 1;
+  range_init(&result->integral);
+  range_init(&result->fractional);
+}
+
+void parse(const char* input, struct parse_result* result) {
+  if (*input == '-') {
+    result->sign = -1;
+  } else if (!is_number(*input)) {
+    return;
+  }
+  input = extract_range(input, ".", &result->integral);
+  if (*input != '\0') {
+    extract_range(++input, "", &result->fractional);
+  }
+}
+
+double range_to_number(const struct range* range, int order) {
+  if (range_is_empty(range)) {
+    return 0;
+  }
+  double result = 0;
+  const char* current = range->begin;
+  while (current != range->end) {
+    if (is_number(*current)) {
+      result += ctoi(*current) * pow(10, order);
+    }
+    order--;
+    current++;
   }
   return result;
 }
 
-double as_atof(char const* s)
-{
-  g_assert(s != NULL);
-  if (*s == '\0') {
-    return 0;
-  }
-  double result = 0;
-  double order = 1.0;
-  double ordertwo = 1.0;
-  int check = 0;
-  int pointCheck = 0;
-  int Bz = 0;
-  int ltcheck = 0;
-  char const* s_current = as_end(s);
-  while (s_current >= s) {
-    int number = *s_current - '0';
-    if (number == -2 && pointCheck == 0) {
-      result = result / order;
-      check += 5;
-      --s_current;
-      pointCheck = 1;
-    } else {
-      if (number == -3) {
-        Bz = 1;
-        --s_current;
-      } else {
-        if (number >= 10 || number <= -1) {
-          ltcheck = 1;
-          --s_current;
-        } else {
-          if (check == 0) {
-            result += number * order;
-            order *= 10.0;
-            ltcheck = 0;
-            --s_current;
-          } else {
-            result += number * ordertwo;
-            ordertwo *= 10.0;
-            ltcheck = 0;
-            --s_current;
-          }
-        }
-      }
-    }
-  }
-  if (Bz == 1) {
-    result *= -1.0;
-  }
-  if (ltcheck == 1) {
-    return 0;
-  }
-  return result;
+// Public interface
+
+double as_atof(const char* input) {
+  struct parse_result parse_result;
+  parse_result_init(&parse_result);
+  parse(input, &parse_result);
+  struct range* integral = &parse_result.integral;
+  struct range* fractional = &parse_result.fractional;
+  return parse_result.sign * (range_to_number(integral, (integral->end - 1) - integral->begin) +
+                              range_to_number(fractional, -1));
 }

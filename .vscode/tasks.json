@@ -64,14 +64,14 @@
       "problemMatcher": []
     },
     {
-      "label": "(make) build strstr - macOS",
+      "label": "(make) atof - macOS",
       "type": "shell",
       "command": "make",
       "options": {
-        "cwd": "${workspaceRoot}/strstr_tests"
+        "cwd": "${workspaceRoot}/atof_tests"
       },
       "args": [
-        "GLIB_HOME=/usr/local/Cellar/glib/2.68.3"
+        "GLIB_HOME=/usr/local/Cellar/glib/2.72.2"
       ],
       "problemMatcher": [
         "$gcc"

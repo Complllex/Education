@@ -45,10 +45,10 @@
             "preLaunchTask": "(make) build strstr"
         },
         {
-            "name": "(lldb) strstr",
+            "name": "(lldb) atof",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/strstr_tests/tests",
+            "program": "${workspaceFolder}/atof_tests/tests",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -57,12 +57,11 @@
             "MIMode": "lldb",
             "setupCommands": [
                 {
-                    "description": "Включить автоматическое форматирование для gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "(make) build strstr - macOS"
+            "preLaunchTask": "(make) atof - macOS"
         },
         {
             "name": "(gdb) Запустить",
