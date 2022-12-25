@@ -1,5 +1,5 @@
 CC = gcc
-GLIB_HOME = /usr/local/Cellar/glib/2.72.2
+GLIB_HOME = /usr
 
 SOURCES = as_atof.c s_atof_test.c range.c
 OBJECTS = $(SOURCES:%.c=%.o)
@@ -10,7 +10,7 @@ PROGRAM = tests
 .PHONY: all clean
 
 all: $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $(PROGRAM)
+	$(CC) $(LDFLAGS) -lm $(OBJECTS) -o $(PROGRAM)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<

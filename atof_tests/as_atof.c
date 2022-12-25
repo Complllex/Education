@@ -3,6 +3,7 @@
 #include <math.h>
 #include "range.h"
 
+#include <stdio.h>
 // Character helpers
 
 bool is_number(char c) { return c >= '0' && c <= '9'; }
@@ -22,6 +23,9 @@ bool is_delimeter(char c, char const* extras) {
 int ctoi(char c) { return c - '0'; }
 
 // String helpers
+bool is_input_correct(char a){
+return (a != '.' && a != '-');
+}
 
 const char* extract_range(const char* input, const char* delimeters, struct range* range) {
   if (*input == '\0') {
@@ -30,6 +34,7 @@ const char* extract_range(const char* input, const char* delimeters, struct rang
   }
   range->begin = input;
   while (!is_delimeter(*input, delimeters)) {
+    if(!is_number(*input) && is_input_correct(*input)){return input;}
     range->end = ++input;
   }
   return input;
@@ -54,7 +59,7 @@ void parse(const char* input, struct parse_result* result) {
     return;
   }
   input = extract_range(input, ".", &result->integral);
-  if (*input != '\0') {
+  if (*input != '\0' && *input == '.') {
     extract_range(++input, "", &result->fractional);
   }
 }
