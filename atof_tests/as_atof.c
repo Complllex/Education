@@ -23,9 +23,7 @@ bool is_delimeter(char c, char const* extras) {
 int ctoi(char c) { return c - '0'; }
 
 // String helpers
-bool is_input_correct(char a){
-return (a != '.' && a != '-');
-}
+bool is_input_correct(char a) { return (a != '.' && a != '-'); }
 
 const char* extract_range(const char* input, const char* delimeters, struct range* range) {
   if (*input == '\0') {
@@ -34,7 +32,9 @@ const char* extract_range(const char* input, const char* delimeters, struct rang
   }
   range->begin = input;
   while (!is_delimeter(*input, delimeters)) {
-    if(!is_number(*input) && is_input_correct(*input)){return input;}
+    if (!is_number(*input) && is_input_correct(*input)) {
+      return input;
+    }
     range->end = ++input;
   }
   return input;
