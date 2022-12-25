@@ -68,6 +68,13 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "range.h": "c"
+        "range.h": "c",
+        "tree.h": "c",
+        "ios": "c",
+        "types.h": "c",
+        "__locale": "c",
+        "locale": "c",
+        "complex": "c",
+        "stdbool.h": "c"
     }
 }

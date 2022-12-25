@@ -45,10 +45,10 @@
             "preLaunchTask": "(make) build strstr"
         },
         {
-            "name": "(lldb) atof",
+            "name": "(lldb) tree",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/atof_tests/tests",
+            "program": "${workspaceFolder}/tree/tests",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -61,7 +61,7 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "(make) atof - macOS"
+            "preLaunchTask": "(make) tree - macOS"
         },
         {
             "name": "(gdb) Запустить",

@@ -55,6 +55,11 @@ void test_atof_without_fractional_part() {
   g_assert_cmpfloat(f, ==, 123.0f);
 }
 
+void test_atof_with_empty_fractional_part() {
+  float f = invoke_atof("123.");
+  g_assert_cmpfloat(f, ==, 123.0f);
+}
+
 int main(int argc, char* argv[]) {
   g_test_init(&argc, &argv, NULL);
   g_test_add_func("/atof/null", test_atof_with_null);
@@ -77,6 +82,10 @@ int main(int argc, char* argv[]) {
   g_test_add_func(
     "/atof/without_fractional_part",
     test_atof_without_fractional_part
+  );
+  g_test_add_func(
+    "/atof/with_empty_fractional_part",
+    test_atof_with_empty_fractional_part
   );
   return g_test_run();
 }
