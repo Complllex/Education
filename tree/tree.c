@@ -9,7 +9,19 @@ struct node* node_create(int payload) {
   return node;
 }
 
-void node_visit(struct node* node, void (*visitor)(payload_t)) { visitor(node->payload); }
+void node_visit(struct node* node, void (*visitor)(payload_t)) {
+  if (node->left == NULL && node->right == NULL) {
+    visitor(node->payload);
+  }
+  if (node->left != NULL) {
+    // visitor(node->payload);
+    node_visit(node->left, visitor);
+  }
+  if (node->right != NULL) {
+    // visitor(node->payload);
+    node_visit(node->right, visitor);
+  }
+}
 
 void node_free(struct node* node) {
   if (node->left != NULL) {

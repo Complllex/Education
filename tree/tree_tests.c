@@ -10,6 +10,13 @@ struct node* parse_expr() {
   root->left = node_create(4);
   root->right = node_create(45);
   root->left->right = node_create(34);
+  root->right->right = node_create(55);
+  root->left->right->left = node_create(14);
+  root->right->right->left = node_create(48);
+  root->left->right->left->left = node_create(13);
+  root->left->right->left->right = node_create(15);
+  root->right->right->left->left = node_create(47);
+  root->right->right->left->right = node_create(49);
   return root;
 }
 
